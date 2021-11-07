@@ -56,7 +56,7 @@
     - [Перевод документации Events (nodejsdev.ru)](https://nodejsdev.ru/api/events/)  
     - [События гайд (nodejsdev.ru)](https://nodejsdev.ru/guide/events/) 
 - Потоки:
-    - [Stream](https://nodejs.org/api/stream.html)  
+    - [Stream](https://nodejs.org/api/stream.html)
     - [fs.createReadStream](https://nodejs.org/api/fs.html#fs_fs_createreadstream_path_options)
     - [Потоки (nodejsdev.ru)](https://nodejsdev.ru/api/stream/)
     - [Pipe (nodejsdev.ru)](https://nodejsdev.ru/guide/pipe/)
