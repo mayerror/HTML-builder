@@ -36,6 +36,6 @@
 ##### Полезные ссылки
 *Обратите внимание, что переводы документации на русский язык могут быть устаревшими и не содержать всех современных возможностей модулей. Однако, основные концепции описанные там работают и по сей день. Для получения актуальной информации всегда используйте официальную документацию!*
 
-- [stat на русском (nodejsdev.ru)](https://nodejsdev.ru/api/fs/#fsstat)  
-- [readdir на русском (nodejsdev.ru)](https://nodejsdev.ru/api/fs/#fsreaddir)  
-- [Stats на русском (nodejsdev.ru)](https://nodejsdev.ru/api/fs/#fsstats)  
+- [stat на русском (nodejsdev.ru)](https://nodejsdev.ru/api/fs/#fsstat)
+- [readdir на русском (nodejsdev.ru)](https://nodejsdev.ru/api/fs/#fsreaddir)
+- [Stats на русском (nodejsdev.ru)](https://nodejsdev.ru/api/fs/#fsstats)
