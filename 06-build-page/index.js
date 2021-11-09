@@ -7,9 +7,9 @@ async function createDir(name) {
   const dirPath = path.join(__dirname, name);
   try {
     await mkdir(dirPath);
-    console.log('Directory created.');
+    console.log('Directory /project-dist created.');
   } catch (err) {
-    console.log('Directory already exist.');
+    console.log('Directory /project-dist already exist.');
   }
 }
 
@@ -105,10 +105,65 @@ async function getFilesNamesCSS(dir) {
   return arr;
 }
 
+async function copyDirectory() {
+  const dirPath = path.join(__dirname, 'project-dist', 'assets');
+  const srcPath = path.join(__dirname, 'assets');
+  try {
+    await mkdir(dirPath);
+  } catch (err) {
+    console.log('Directory already exist.');
+  }
+  
+    const files = await readdir(srcPath, {withFileTypes: true});
+    for await (const file of files) {
+      if (!file.isFile()) {
+        const  dirEntryPath = path.join(dirPath, file.name);
+        const  srcEntryPath = path.join(srcPath, file.name);
+        try {
+          await mkdir(dirEntryPath);
+        } catch (err) {
+          console.log(`Directory  ${dirEntryPath}  already exist.`);
+        }
+        await copyDir(srcEntryPath, dirEntryPath);
+      }
+    }
+}
+
+async function copyDir(src, dest) {
+  try {
+    await mkdir(dest);
+  } catch (err) {
+    console.log('Directory already exist.');
+  }
+  try {
+    const arrName = await getFilesNames(src);
+    for (let i = 0; i < arrName.length; i++) {
+      const fileName = arrName[i];
+      const srcFile  = path.join(src, fileName);
+      const destFile  = path.join(dest, fileName);
+      await copyFile(srcFile, destFile);
+    }
+    const arrNameDest = await getFilesNames(dest);
+    if (arrNameDest.length > arrName.length) {
+      for (let i = 0; i < arrNameDest.length; i++) {
+        const item = arrNameDest[i];
+        if (!arrName.includes(item)) {
+          const pathDel =  path.join(dest, item);
+          await unlink(pathDel);
+        }
+      }
+    }
+    console.log('Source files was copied to destination');
+  } catch {
+    console.log('The files could not be copied');
+  }
+}
+
 async function init() {
   await createDir('project-dist');
   await createHtml('template.html');
   await bundleStyles();
+  await copyDirectory();
 }
 
 init();
